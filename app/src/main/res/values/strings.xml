@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LoadingFragmentSample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="activity_with_loading_fragment_hiding">挡住内容价值</string>
+    <string name="title_activity_fragment_content_hided">FragmentContentHided</string>
+    <string name="progress_bar_description">正在加载数据...</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="presentation">To tell the decoder to subsample the image, loading a smaller version into memory, set inSampleSize to true in your BitmapFactory.Options object. For example, an image with resolution 2048x1536 that is decoded with an inSampleSize of 4 produces a bitmap of approximately 512x384. Loading this into memory uses 0.75MB rather than 12MB for the full image (assuming a bitmap configuration of ARGB_8888). Here’s a method to calculate a sample size value that is a power of two based on a target width and height:</string>
+    <string name="title_activity_image_grid_view">ImageGridViewActivity</string>
+    <string name="tv_desc">最漂亮的美女</string>
+</resources>
