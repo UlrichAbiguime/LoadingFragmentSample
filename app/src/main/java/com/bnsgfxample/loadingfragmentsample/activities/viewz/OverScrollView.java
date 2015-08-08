@@ -85,7 +85,6 @@ public class OverScrollView extends  ScrollView{
                         if (disY>=ViewConfiguration.get(context).getScaledTouchSlop()&&disY>disX) {
                                 return true;
                         }
-                        
                 }
                 return super.onInterceptTouchEvent(ev);
         }
@@ -96,13 +95,10 @@ public class OverScrollView extends  ScrollView{
                 switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                         pressY=ev.getRawY();
-//                        System.out.println("down "+pressY);
                         break;
                 case MotionEvent.ACTION_MOVE:
                         int sy=getScrollY();
-//                        System.out.println("move    getRawY�� " +ev.getRawY()+   "    getScrollY: "+sy  +"   getChildAt(0).getHeight()��"+getChildAt(0).getHeight()+"   getHigh():"+getHeight());
                         if (sy==0&&ev.getRawY()>pressY) {
-//                                isDown=true;
                         	if(ispulldown){
                                 downDis=(float) ((ev.getRawY()-pressY)/3);
                                 getChildAt(0).setTranslationY(downDis);
@@ -112,15 +108,7 @@ public class OverScrollView extends  ScrollView{
                         	}
                                 return true;
                         }
-//                        if (isDown) {
-//                                
-//                                setTranslationY(ev.getRawY()-pressY);
-//                                
-//                                return true;
-//                        }
-                         
                         if (sy+getHeight()==getChildAt(0).getHeight()&&ev.getRawY()<pressY) {
-//                                isUp=true;
                                 upDis=(float) ((ev.getRawY()-pressY)/3);
                                 getChildAt(0).setTranslationY(upDis);
                                 if (listener!=null) {
@@ -138,11 +126,6 @@ public class OverScrollView extends  ScrollView{
                                 }
                                 return true;
                         }
-//                        if (isUp) {
-//                                setTranslationY(ev.getRawY()-pressY);
-//                                return true;
-//                                
-//                        }
                         pressY=ev.getRawY();
                         try {
                                 return super.onTouchEvent(ev);
@@ -156,7 +139,6 @@ public class OverScrollView extends  ScrollView{
                 case MotionEvent.ACTION_CANCEL: 
                         final float start=getChildAt(0).getTranslationY();
                         ObjectAnimator animator=ObjectAnimator.ofFloat(getChildAt(0), "translationY", start,0);
-                       // animator.setDuration(500);
                         animator.setInterpolator(new AccelerateDecelerateInterpolator());
                         animator.addUpdateListener(new AnimatorUpdateListener() {
                                 
@@ -184,10 +166,7 @@ public class OverScrollView extends  ScrollView{
                                 }
                         });
                         animator.start();
-                        
                         break;
-
-                 
                 }
                 return true;
         }

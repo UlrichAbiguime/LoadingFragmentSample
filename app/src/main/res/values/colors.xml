@@ -2,6 +2,7 @@
 <resources>
     <color name="yellow">#320011</color>
     <color name="white">#ffffff</color>
-    <color name="warmblack">#333333</color>
+    <color name="warmblack">#696969</color>
     <color name="green">#ff1bff34</color>
+    <color name="mablack">#000000</color>
 </resources>

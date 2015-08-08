@@ -27,10 +27,12 @@ public class Utils {
         if (data != null)
             for (int i = 0; i < data.length; i++) {
                 ResearchResultBeanz.PictureItem item = data[i];
-                String size = "l";
-                Log.d("qwerty", item.link + " ---- " + item.link.replace(".jpg", size + ".jpg").replace(".png", size + ".png").replace(".gif", size + ".gif").replace(".jpeg", size + ".jpeg"));
+                String size = "m";
+//                Log.d("qwerty", item.link + " ---- " + item.link.replace(".jpg", size + ".jpg").replace(".png", size + ".png").replace(".gif", size + ".gif").replace(".jpeg", size + ".jpeg"));
                 item.link = item.link.replace(".jpg", size+".jpg").replace(".png", size+".png").replace(".gif", size+".gif").replace(".jpeg", size+".jpeg");
-                tmp.add(item);
+
+                if (item.link.contains(".jpg") || item.link.contains(".png") || item.link.contains(".jpeg") )
+                    tmp.add(item);
             }
         return tmp;
     }

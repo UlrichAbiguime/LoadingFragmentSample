@@ -1,7 +1,6 @@
 package com.bnsgfxample.loadingfragmentsample.activities.adapterz;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.bnsgfxample.loadingfragmentsample.R;
-import com.bnsgfxample.loadingfragmentsample.activities.ImageGridViewActivity;
 import com.bnsgfxample.loadingfragmentsample.activities.beanz.ResearchResultBeanz;
-import com.bnsgfxample.loadingfragmentsample.activities.on3.MyBoruto;
-import com.bnsgfxample.loadingfragmentsample.activities.viewz.RoundedTransformation;
 import com.etsy.android.grid.util.DynamicHeightImageView;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by UlrichAbiguime at Shenzhen.
@@ -27,7 +23,7 @@ import java.util.List;
 public class GridViewAdapter extends BaseAdapter {
 
 
-    Context mCtx;
+    static Context mCtx;
     List<ResearchResultBeanz.PictureItem> data;
     LayoutInflater inf;
 
@@ -57,44 +53,53 @@ public class GridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        ResearchResultBeanz.PictureItem item = (ResearchResultBeanz.PictureItem) getItem(position);
         View view;
         ViewHolder viewHolder;
         if (convertView == null) {
             view = inf.inflate(R.layout.gridview_item, parent, false);
-            viewHolder = ViewHolder.makeUp (view);
+            viewHolder = new ViewHolder(view, item);
         } else {
             view = convertView;
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ResearchResultBeanz.PictureItem item = (ResearchResultBeanz.PictureItem) getItem(position);
-
         viewHolder.tv_vues.setText("#" + item.views + "");
         viewHolder.tv_pres.setText(item.description);
+        viewHolder.tv_title.setText(item.title);
         // links should be change
-
-     Picasso.with(mCtx).load(item.link).placeholder(R.drawable.heliboy)/*.transform(new RoundedTransformation(50, 4))*/
-                .error(R.drawable.error).into(viewHolder.imageView);
-
+        if (item.description == null || item.description.trim().equals("")) {
+            viewHolder.tv_pres.setVisibility(View.GONE);
+            viewHolder.divider.setVisibility(View.GONE);
+        } else {
+            viewHolder.tv_pres.setVisibility(View.VISIBLE);
+            viewHolder.divider.setVisibility(View.VISIBLE);
+        }
+        Picasso.with(mCtx).load(item.link).placeholder(R.drawable.heliboy) /*.transform(new RoundedTransformation(50, 4))*/
+                .error(R.drawable.heliboy).into(viewHolder.imageView);
         // if it is an album then upload little pics from the album and put them inside to show.
-        //                viewHolder.imageView.setImageResource(R.drawable.sample);
+        viewHolder.inner = item;
         view.setTag(viewHolder);
         return view;
     }
 
+    public void appendData(List<ResearchResultBeanz.PictureItem> pictureItems) {
+        data.addAll(pictureItems);
+        notifyDataSetChanged();
+    }
+
     static class ViewHolder {
 
-        public DynamicHeightImageView imageView;
-        public TextView tv_pres,tv_vues, tv_title;
+        @Bind(R.id.iv_gridview_item) public DynamicHeightImageView imageView;
+        @Bind(R.id.tv_description)public TextView tv_pres;
+        @Bind(R.id.tv_vues) public TextView tv_vues;
+        @Bind(R.id.tv_title) public TextView tv_title;
+        @Bind(R.id.rel_divider) public View divider;
+        public ResearchResultBeanz.PictureItem inner;
 
-        public static ViewHolder makeUp (View v) {
-
-            ViewHolder vh = new ViewHolder();
-            vh.imageView = (DynamicHeightImageView) v.findViewById(R.id.iv_gridview_item);
-            vh.tv_pres = (TextView) v.findViewById(R.id.tv_description);
-            vh.tv_vues = (TextView) v.findViewById(R.id.tv_vues);
-            vh.tv_title = (TextView) v.findViewById(R.id.tv_title);
-            return vh;
+        public ViewHolder (View v, ResearchResultBeanz.PictureItem item) {
+            ButterKnife.bind(this, v);
+            inner = item;
         }
     }
 
