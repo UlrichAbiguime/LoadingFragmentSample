@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.bnsgfxample.loadingfragmentsample.activities.ImageGridViewActivity;
 import com.bnsgfxample.loadingfragmentsample.activities.utils.LruBitmapCache;
 
 
@@ -98,7 +99,11 @@ public class MyBoruto {
         return requestQueue;
     }
 
+
+    public final String tag = ImageGridViewActivity.class.toString();
+
     public <T> void addToRequestQueue(Request<T> req) {
+        req.setTag(tag);
         getRequestQueue().add(req);
     }
 

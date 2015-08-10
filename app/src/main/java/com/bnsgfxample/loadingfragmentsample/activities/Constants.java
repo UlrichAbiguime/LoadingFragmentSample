@@ -10,7 +10,7 @@ import android.os.Environment;
  */
 public class Constants {
 
-	private final static String BASE_URL="http://192.168.i1.47:8082";
+	private final static String BASE_URL="http://192.168.1.47:8082";
 
 	// 首页路径
 	public static final String IMAGE_URL = BASE_URL+"/App/Home";
@@ -52,4 +52,5 @@ public class Constants {
 	// 需要分享的图片
 	public static final String SHARE_FILE = BASE_PATH + "QrShareImage.png";
 
+	public static final int DOWNLOADED_IMAGE_WIDTH = 90;
 }

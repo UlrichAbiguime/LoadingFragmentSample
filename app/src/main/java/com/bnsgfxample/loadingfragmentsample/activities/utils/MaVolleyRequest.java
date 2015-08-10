@@ -6,6 +6,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.bnsgfxample.loadingfragmentsample.activities.ImageGridViewActivity;
 import com.bnsgfxample.loadingfragmentsample.activities.interfaces.VolleyRequestOnResultListener;
 import com.bnsgfxample.loadingfragmentsample.activities.on3.MyBoruto;
 
@@ -23,7 +24,7 @@ public class MaVolleyRequest {
 
         //1- images when retrieved have to be put inside the LruCache.
     }*/
-
+    public final String tag = ImageGridViewActivity.class.toString();
     private static MaVolleyRequest instance;
     private static MyBoruto borutoInstance;
 
@@ -79,4 +80,7 @@ public class MaVolleyRequest {
         borutoInstance.addToRequestQueue(req);
     }
 
+    public void killAllRequest(String s) {
+        borutoInstance.cancelAllRequest(s);
+    }
 }

@@ -16,29 +16,33 @@ public class CustomTextview extends TextView {
         super(context);
     }
 
+    static {
+    }
+
     public CustomTextview(Context context, AttributeSet attrs) {
         super(context, attrs);
-        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "lines"));
+        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "maxLines"));
+        this.isInEditMode();
     }
 
     public CustomTextview(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "lines"));
-
+        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "maxLines"));
+        this.isInEditMode();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public CustomTextview(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "lines"));
-
+        NBLINES = Integer.valueOf(attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "maxLines"));
+        this.isInEditMode();
     }
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-       super.setText(text, type);
+        super.setText(text, type);
         if (NBLINES == 0)
-            NBLINES  =4;
+            NBLINES  = 2;
         postDelayed(new Runnable() {
             @Override
             public void run() {
