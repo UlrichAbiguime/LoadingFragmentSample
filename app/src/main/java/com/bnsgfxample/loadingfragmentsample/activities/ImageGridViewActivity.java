@@ -95,7 +95,6 @@ public class ImageGridViewActivity extends AppCompatActivity implements AbsListV
 
 
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-
     }
 
     public void onScroll(AbsListView view, int firstVisibleItem,
@@ -103,8 +102,7 @@ public class ImageGridViewActivity extends AppCompatActivity implements AbsListV
 
         if(firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0)
         {
-            if(flag_loading == false)
-            {
+            if(flag_loading == false) {
                 flag_loading = true;
                 PAGE_NUM++;
                 gridView.postDelayed(new Runnable() {
