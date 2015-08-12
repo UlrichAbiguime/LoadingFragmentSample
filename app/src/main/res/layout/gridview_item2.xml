@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_height="wrap_content">
+
+        <com.etsy.android.grid.util.DynamicHeightImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_gray"
+            android:id="@+id/iv_gridview_item"
+            android:src="@drawable/heliboy"
+            android:adjustViewBounds="false"
+            android:gravity="center"
+            android:scaleType="centerCrop"/>
+
+        <com.bnsgfxample.loadingfragmentsample.activities.viewz.CustomTextview
+            android:maxLines="2"
+            android:id="@+id/tv_title"
+            android:background="@color/transparent_black"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:gravity="left"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:text="Heroine is not good for you"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:padding="7dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:src="@null"
+            android:background="@color/yellow"
+            android:layout_marginRight="10dp"
+            android:layout_height="40dp" />
+
+        <com.bnsgfxample.loadingfragmentsample.activities.viewz.CustomTextview
+            android:maxLines="3"
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:text="@string/presentation"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+<LinearLayout
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_eye"
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:text="778"
+        android:drawableLeft="@drawable/icon_eye"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_margin="5dp"
+        android:id="@+id/tv_coms"
+        android:text="456"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/icon_comment"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:id="@+id/tv_likes"
+        android:text="655"
+        android:layout_width="wrap_content"
+        android:layout_gravity="right"
+        android:drawableLeft="@drawable/icon_collection"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
+
+</LinearLayout>

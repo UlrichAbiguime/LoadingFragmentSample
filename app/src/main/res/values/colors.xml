@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="yellow">#320011</color>
+    <color name="yellow">#ffbcca1a</color>
     <color name="white">#ffffff</color>
     <color name="warmblack">#696969</color>
     <color name="green">#ff1bff34</color>
     <color name="mablack">#000000</color>
+    <color name="transparent_black">#88000000</color>
+    <color name="purple_gray">#ffffccce</color>
 </resources>
